@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Archivator>
+    <Source>C:\WorkspaceNET\Interview\IronMountain\ImagesSource</Source>
+    <Destination>C:\WorkspaceNET\Interview\IronMountain\ImagesDestination</Destination>
+    <Delimiter>|</Delimiter>
+</Archivator>
+
+
