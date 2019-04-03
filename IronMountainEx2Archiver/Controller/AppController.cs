@@ -1,4 +1,5 @@
 ﻿using IronMountainEx2Archiver.DTO;
+using IronMountainEx2Archiver.Utils;
 using IronMountainEx2Archiver.Utils.Components;
 using System.Drawing;
 using System.IO;
@@ -50,10 +51,15 @@ namespace IronMountainEx2Archiver.Controller
                     ComponentsUtil.AppendTextToRichTextBox(form1.GetRichTextBoxInfo(), "\tSource dir not exist..", Color.Red, true);
                     return;
                 }
+
+                //process .meta file and build zipFile
                 ComponentsUtil.AppendTextToRichTextBox(form1.GetRichTextBoxInfo(), "\tStarting build archive files..", Color.Green, true);
                 ArchiveController archiveCtrl = new ArchiveController(form1);
-                archiveCtrl.BuildZipFile();
+                bool builtZip =  archiveCtrl.BuildZipFile();
                 ComponentsUtil.AppendTextToRichTextBox(form1.GetRichTextBoxInfo(), "\tFinished build archive file..", Color.Green, true);
+
+                //if ZipFile was built succesfully then delete .meta from (source ) .meta file unzipped
+                if (builtZip)  FileUtil.DeleteFile(archiveCtrl.pathMetadata);
             }
         }
     }

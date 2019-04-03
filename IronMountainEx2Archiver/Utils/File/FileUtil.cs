@@ -83,6 +83,11 @@ namespace IronMountainEx2Archiver.Utils
             string[] images = CustomDirectoryTools.GetFiles(path, patterns, SearchOption.AllDirectories);
             return images;
         }
+
+        public static void DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath)) File.Delete(filePath);
+        }
     }
 
     public static class CustomDirectoryTools
@@ -96,4 +101,6 @@ namespace IronMountainEx2Archiver.Utils
             return patterns.SelectMany(pattern => Directory.GetFiles(path, pattern, options)).Distinct().ToArray();
         }
     }
+
+  
 }
